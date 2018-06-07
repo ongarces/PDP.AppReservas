@@ -40,7 +40,7 @@ public class HabitacionServlet extends HttpServlet {
                 Boolean sw = false;
 
                 String idHabitacion = request.getParameter("txtidhabitacion");
-                int camas = Integer.getInteger(request.getParameter("txtcamas"));
+                String camas = request.getParameter("txtcamas");
                 String tipoHabitacion = request.getParameter("txttipo");
                 String banioPv = request.getParameter("txtprivado");
 
