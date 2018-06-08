@@ -38,10 +38,19 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/index.jsp">Inicio</a>
-                    </li>                                      
+                    </li>  
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">Listar Reservas</a>
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroHabitacion.jsp">Registrar Habitacion</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/HabitacionServlet?accion=listar">listar Habitaciones</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reservas</a>
+                    </li> 
 
                 </ul>        
             </div>
@@ -59,19 +68,19 @@
 
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" name="txtidreserva" class="form-control" placeholder="id reserva 90xx">
+                                <input type="text" name="txtidreserva" class="form-control" placeholder="id reserva 90xx" required>
                             </div>                              
                         </div>
                         
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" name="txthabitacion" class="form-control" placeholder="id habitacion 10xx">
+                                <input type="text" name="txthabitacion" class="form-control" placeholder="id habitacion 10xx" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" name="txtrcamas" class="form-control" placeholder="Numero de camas">
+                                <input type="text" name="txtcamas" class="form-control" placeholder="Numero de camas" required>
                             </div>
                         </div>
                         

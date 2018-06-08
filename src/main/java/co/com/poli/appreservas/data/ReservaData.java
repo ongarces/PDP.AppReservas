@@ -17,7 +17,7 @@ public class ReservaData {
             {
                 add(new Reserva("9010", "1010", 2, 30000));     //  comp   5     
                 add(new Reserva("9011", "1040", 5, 30000));   //      comp 6      
-                add(new Reserva("9012", "1030", 2, 50000)); //          pv 4    
+                add(new Reserva("9012", "1030", 4, 50000)); //          pv 4    
 
             }
         };

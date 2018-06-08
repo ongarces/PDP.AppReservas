@@ -16,7 +16,7 @@ public class HabitacionData {
         listaHabitaciones = new ArrayList<Habitacion>(){
             {
                 add(new Habitacion("1010", "compartida", 5, "si"));
-                add(new Habitacion("1020", "privada", 3, "no"));
+                add(new Habitacion("1020", "privada", 4, "no"));
                 add(new Habitacion("1030", "privada", 4, "si"));
                 add(new Habitacion("1040", "compartida", 6, "si"));
                 add(new Habitacion("1050", "compartida", 4, "no"));                

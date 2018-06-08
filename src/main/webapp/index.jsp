@@ -53,7 +53,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reserva</a>
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reservas</a>
                     </li> 
                     
                     

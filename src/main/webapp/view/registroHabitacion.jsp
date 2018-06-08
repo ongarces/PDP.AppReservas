@@ -39,9 +39,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/index.jsp">Inicio</a>
                     </li>                                      
+                                        
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/HabitacionServlet?accion=listar">Listar Habitaciones</a>
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroReserva.jsp">Registrar Reserva</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/HabitacionServlet?accion=listar">listar Habitaciones</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reservas</a>
+                    </li> 
 
                 </ul>        
             </div>
@@ -58,10 +67,10 @@
 
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" name="txtidhabitacion" class="form-control" placeholder="id habitacion">
+                                <input type="text" name="txtidhabitacion" class="form-control" placeholder="id habitacion" required>
                             </div>  
                             <div class="col">
-                                <input type="number" name="txtcamas" class="form-control" placeholder="Numero de camas">
+                                <input type="number" name="txtcamas" class="form-control" placeholder="Numero de camas" required>
                             </div>
                         </div>
 

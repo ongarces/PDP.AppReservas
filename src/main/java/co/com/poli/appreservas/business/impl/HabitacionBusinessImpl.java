@@ -25,7 +25,7 @@ public class HabitacionBusinessImpl implements IHabitacionBusiness{
 
     @Override
     public Habitacion obtenerHabitacion(String id) {
-       return hDaoImpl.obtenerHabitacion(id);
+       return hDaoImpl.obtenerHabitacion(id);//null si no existe
     }
 
     @Override

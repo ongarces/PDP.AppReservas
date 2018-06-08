@@ -42,11 +42,15 @@
                     
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroHabitacion.jsp">Registrar Habitacion</a>
-                    </li>                    
+                    </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroReserva.jsp">Registrar Reserva</a>
                     </li>
+                                        
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reservas</a>
+                    </li> 
 
                 </ul>        
             </div>
