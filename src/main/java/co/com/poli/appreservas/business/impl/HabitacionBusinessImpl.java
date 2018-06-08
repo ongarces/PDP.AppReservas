@@ -37,7 +37,19 @@ public class HabitacionBusinessImpl implements IHabitacionBusiness{
               sw = true;  
             }
         }
-        return sw;  //false=crear   true=existe      
+        return sw;  //false=crear   true=existe->noCrear      
+    }
+
+    @Override
+    public Boolean validarCamas(String tipoHabitacion, int camasI) {
+        Boolean sw = true;
+        if (tipoHabitacion.equalsIgnoreCase("compartida") && ((camasI > 3) && (camasI <= 8)) ) {
+            sw = false;//cumple
+        }else if (tipoHabitacion.equalsIgnoreCase("privada")  && (camasI == 4) ) {
+            sw = false;//cumple
+        }
+        return sw;//false=crear     true=camasErroneas->noCrear
+        
     }
     
 }

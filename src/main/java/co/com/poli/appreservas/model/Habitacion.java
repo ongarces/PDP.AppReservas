@@ -10,13 +10,13 @@ public class Habitacion {
     
     private String idHabitacion;
     private String tipoHabitacion;
-    private String camasHabitacion;
+    private int camasHabitacion;
     private String banioPv;
 
     public Habitacion() {
     }
 
-    public Habitacion(String idHabitacion, String tipoHabitacion, String camasHabitacion, String banioPv) {
+    public Habitacion(String idHabitacion, String tipoHabitacion, int camasHabitacion, String banioPv) {
         this.idHabitacion = idHabitacion;
         this.tipoHabitacion = tipoHabitacion;
         this.camasHabitacion = camasHabitacion;
@@ -47,11 +47,11 @@ public class Habitacion {
         this.tipoHabitacion = tipoHabitacion;
     }
 
-    public String getCamasHabitacion() {
+    public int getCamasHabitacion() {
         return camasHabitacion;
     }
 
-    public void setCamasHabitacion(String camasHabitacion) {
+    public void setCamasHabitacion(int camasHabitacion) {
         this.camasHabitacion = camasHabitacion;
     }
 

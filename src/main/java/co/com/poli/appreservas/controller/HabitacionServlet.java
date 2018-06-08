@@ -4,6 +4,7 @@ import co.com.poli.appreservas.business.impl.HabitacionBusinessImpl;
 import co.com.poli.appreservas.model.Habitacion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class HabitacionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession(true);
         RequestDispatcher rd = null;
 
@@ -38,21 +40,41 @@ public class HabitacionServlet extends HttpServlet {
         switch (accion) {
             case "crear":
                 Boolean sw = false;
+                Boolean sw2 = false;
 
                 String idHabitacion = request.getParameter("txtidhabitacion");
                 String camas = request.getParameter("txtcamas");
                 String tipoHabitacion = request.getParameter("txttipo");
                 String banioPv = request.getParameter("txtprivado");
 
-                Habitacion habitacion = new Habitacion(idHabitacion, tipoHabitacion, camas, banioPv);
-                
-                sw = hBusinessImpl.validarHabitacion(idHabitacion);
+                int camasI = Integer.parseInt(camas);
 
-                if (sw == true) {
+                Habitacion habitacion = new Habitacion(idHabitacion, tipoHabitacion, camasI, banioPv);
+
+                sw = hBusinessImpl.validarHabitacion(idHabitacion);//true=noCrear(existe)
+                sw2 = hBusinessImpl.validarCamas(tipoHabitacion, camasI);//true=noCrear(camasErr)
+
+                if (sw == true) {//habitacionExiste
                     String msj = "Hola esta habitacion ya existe";
                     session.setAttribute("MENSAJE", msj);
+                    msj = "";
                     rd = request.getRequestDispatcher("/mensaje.jsp");
-                } else {
+
+                } else if (sw2 == true) {//camasErr
+                    String msj = "Hola ...";
+                    msj = msj + " esta habitacion no acepta este numero de camas";
+
+                    if (tipoHabitacion.equalsIgnoreCase("compartida")) {
+                        msj = msj + "\n rango aceptado -> 4 a 8 camas para habitacion compartida";
+                    } else if (tipoHabitacion.equalsIgnoreCase("privada")) {
+                        msj = msj + "\n solo aceptan 4 camas para habitacion privada";
+                    }
+
+                    session.setAttribute("MENSAJE", msj);
+                    msj = "";
+                    rd = request.getRequestDispatcher("/mensaje.jsp");
+
+                } else {//habitacion no existe... crear
                     String msjCrear = hBusinessImpl.crearHabitacion(habitacion);
                     List<Habitacion> listaHabitaciones = hBusinessImpl.obtenerListaHabitaciones();
                     session.setAttribute("LISTADO", listaHabitaciones);

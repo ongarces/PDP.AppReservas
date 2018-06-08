@@ -13,4 +13,5 @@ public interface IHabitacionBusiness {
     Habitacion obtenerHabitacion(String id); 
     
     Boolean validarHabitacion(String idHabitacion);
+    Boolean validarCamas(String tipoHabitacion, int camasI);
 }
