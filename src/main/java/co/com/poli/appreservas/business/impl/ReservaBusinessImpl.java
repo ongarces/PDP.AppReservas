@@ -63,14 +63,56 @@ public class ReservaBusinessImpl implements IReservaBusiness {
 
     @Override
     public int buscarOcupadas(String idHabitacionR) {
-        int ocupadas=0;
+        int ocupadas = 0;
         List<Reserva> listaReservas = rDaoImpl.obtenerListaReservas();
-        for (Reserva res : listaReservas) {            
+        for (Reserva res : listaReservas) {
             if (res.getIdHabitacionR().equals(idHabitacionR)) {//si existe
                 ocupadas += res.getCamasR();//acumula ocupadas
-            }            
+            }
         }
         return ocupadas;
+    }
+
+    @Override
+    public String valorPrivadasOcupadas() {
+
+        int cantidadPrivadas=0, camas=0, valortotal=0;
+        List<Reserva> listaReservas = rDaoImpl.obtenerListaReservas();
+        List<Habitacion> listaHabitaciones = hDaoImpl.obtenerListaHabitaciones();
+        
+        for (Habitacion hab : listaHabitaciones) {            
+            for (Reserva res : listaReservas) {                
+                if (res.getIdHabitacionR().equals(hab.getIdHabitacion()) 
+                        && hab.getTipoHabitacion().equalsIgnoreCase("privada")) {//si existe reserva de habitacion privada
+                    cantidadPrivadas++; 
+                }                
+            }            
+        }
+        
+        camas = cantidadPrivadas*4;
+        valortotal=camas*50000;
+        
+        return "La cantidad de habitaciones privadas reservadas es: " + cantidadPrivadas 
+                + " en total serian: " + camas + " camas, dando asi un costo total de: $" + valortotal;
+
+    }
+
+    @Override
+    public String calcularCostosa() {
+       
+        int costoMayor=0, costoActual=0;
+        String numeroHabitacion ="xxxx";
+        
+        List<Reserva> listaReservas = rDaoImpl.obtenerListaReservas();
+        List<Habitacion> listaHabitaciones = hDaoImpl.obtenerListaHabitaciones();
+        for (Reserva res : listaReservas) {
+            costoActual = res.getCamasR()*res.getPrecioCama();
+            if (costoActual>costoMayor) {
+                costoMayor=costoActual;
+                numeroHabitacion=res.getIdHabitacionR();
+            }
+        }        
+        return "La habitacion reservada mas costosa es: " + numeroHabitacion + " con un valor de: $" + costoMayor;
     }
 
 }

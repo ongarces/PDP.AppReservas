@@ -18,5 +18,7 @@ public interface IReservaBusiness {
     Boolean validarReserva(String idReserva);
     Boolean validarReservaPrivada(String idHabitacionR);
     int buscarOcupadas(String idHabitacionR);
+    String valorPrivadasOcupadas();
+    String calcularCostosa();
 
 }

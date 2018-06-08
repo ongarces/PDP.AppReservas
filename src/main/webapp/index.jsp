@@ -35,7 +35,7 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    
+
                     <li class="nav-item active">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/index.jsp">INICIO</a>
                     </li>
@@ -43,20 +43,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroHabitacion.jsp">Registrar Habitacion</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/view/registroReserva.jsp">Registrar Reserva</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/HabitacionServlet?accion=listar">listar Habitaciones</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=listar">listar Reservas</a>
                     </li> 
-                    
-                    
+
+
 
                 </ul>        
             </div>
@@ -70,6 +70,15 @@
                     <h2>ESTE ES EL INDEX PARA RESERVA DE HABITACIONES </h2>
                     <br>
                     <p>PDP - CRISTIAN GARCES AGUDELO -</p>
+                    <br>
+                    <br>
+
+                    <div class="">
+                        <a class="btn btn-primary" 
+                           href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=pvocupadas">Privadas ocupadas</a>
+                        <a class="btn btn-primary"
+                           href="${pageContext.servletContext.contextPath}/ReservaServlet?accion=costosaocupada">Ocupada mas costosa</a>
+                    </div> 
                 </div>
             </div>
 

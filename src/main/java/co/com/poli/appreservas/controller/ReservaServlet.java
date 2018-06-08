@@ -111,10 +111,9 @@ public class ReservaServlet extends HttpServlet {
 
                                 List<Reserva> listaReservas = rBusinessImpl.obtenerListaReservas();
                                 session.setAttribute("LISTADO", listaReservas);
-                                session.setAttribute("MENSAJE", msjCrear);
+                                //session.setAttribute("MENSAJE", msjCrear);
 
                                 rd = request.getRequestDispatcher("/view/listaReservas.jsp");
-
                             }
 
                         } else { //no cumple solicitud con camas de habitacion
@@ -143,78 +142,26 @@ public class ReservaServlet extends HttpServlet {
                 session.setAttribute("LISTADO", listaReservas);
                 rd = request.getRequestDispatcher("/view/listaReservas.jsp");
                  */
-
-//                Boolean sw = false;
-//                Boolean sw2 = false;
-//
-//                String idHabitacion = request.getParameter("txtidhabitacion");
-//                String camas = request.getParameter("txtcamas");
-//                String tipoHabitacion = request.getParameter("txttipo");
-//                String banioPv = request.getParameter("txtprivado");
-//
-//                int camasI = Integer.parseInt(camas);
-//
-//                Habitacion habitacion = new Habitacion(idHabitacion, tipoHabitacion, camasI, banioPv);
-//
-//                sw = hBusinessImpl.validarHabitacion(idHabitacion);//true=noCrear(existe)
-//                sw2 = hBusinessImpl.validarCamas(tipoHabitacion, camasI);//true=noCrear(camasErr)
-//
-//                if (sw == true) {//ReservaExiste
-//                    String msj = "Hola esta habitacion ya existe";
-//                    session.setAttribute("MENSAJE", msj);
-//                    msj = "";
-//                    rd = request.getRequestDispatcher("/mensaje.jsp");
-//
-//                } else if (sw2 == true) {//camasErr
-//                    String msj = "Hola ...";
-//                    msj = msj + " esta habitacion no acepta este numero de camas";
-//
-//                    if (tipoHabitacion.equalsIgnoreCase("compartida")) {
-//                        msj = msj + "\n rango aceptado -> 4 a 8 camas para habitacion compartida";
-//                    } else if (tipoHabitacion.equalsIgnoreCase("privada")) {
-//                        msj = msj + "\n solo aceptan 4 camas para habitacion privada";
-//                    }
-//
-//                    session.setAttribute("MENSAJE", msj);
-//                    msj = "";
-//                    rd = request.getRequestDispatcher("/mensaje.jsp");
-//
-//                } else {//Reserva no existe... --> crear
-//                    String msjCrear = hBusinessImpl.crearHabitacion(habitacion);
-//                    List<Habitacion> listaHabitaciones = hBusinessImpl.obtenerListaHabitaciones();
-//                    session.setAttribute("LISTADO", listaHabitaciones);
-//                    rd = request.getRequestDispatcher("/view/listaHabitaciones.jsp");
-//                }
                 break;
 
             case "listar":
-
                 List<Reserva> listarReservas = rBusinessImpl.obtenerListaReservas();
                 session.setAttribute("LISTADO", listarReservas);
-//                
-//                List<Habitacion> listaHabitaciones = hBusinessImpl.obtenerListaHabitaciones();
-//                session.setAttribute("LISTADO2", listaHabitaciones);
-
                 rd = request.getRequestDispatcher("/view/listaReservas.jsp");
                 break;
 
-//            case "usado":
-//                String msjUsado = cBusinessImpl.creditoMasUsado();
-//                session.setAttribute("MENSAJE", msjUsado);
-//                rd = request.getRequestDispatcher("/mensaje.jsp");
-//                break;
-//
-//            case "acumulado":
-//                String msjAcumulado = cBusinessImpl.acumuladoCreditos();
-//                session.setAttribute("MENSAJE", msjAcumulado);
-//                rd = request.getRequestDispatcher("/mensaje.jsp");
-//                break;
-//
-//            case "prestador":
-//                String msjPrestador = cBusinessImpl.mayorPrestamista();
-//                session.setAttribute("MENSAJE", msjPrestador);
-//                rd = request.getRequestDispatcher("/mensaje.jsp");
-//                break;
+            case "pvocupadas":
+                String valorMsjOcupadas = rBusinessImpl.valorPrivadasOcupadas();
+                session.setAttribute("MENSAJE", valorMsjOcupadas);
+                rd = request.getRequestDispatcher("/mensaje.jsp");
+                break;
+
+            case "costosaocupada":
+                String msjCostosa = rBusinessImpl.calcularCostosa();
+                session.setAttribute("MENSAJE", msjCostosa);
+                rd = request.getRequestDispatcher("/mensaje.jsp");
+                break;
+                
             default:
                 break;
         }

@@ -64,8 +64,6 @@
             <div class="jumbotron">
                 <div class="container">
                     
-                    <h6><c:out value="${sessionScope.MENSAJE}"></c:out></h6>
-
                     <h2> TABLA </h2>
                     <br><br>
 
